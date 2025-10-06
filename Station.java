@@ -16,6 +16,17 @@ public class Station {
         
     }
 
+    public Boolean inService(Station station){
+        if(station.color != "" && station.name != ""){
+            inService = true;
+        }
+        else{ 
+            inService = false;
+        }
+
+        return inService;
+    }
+
     public void addNext(Station nextStation){
         this.next = nextStation;
     
@@ -28,6 +39,26 @@ public class Station {
     public boolean isAvailable(){
 
         return false;
+    }
+    public void connect(Station station){
+        this.next = station;
+        station.previous = this;
+    }
+    public void connect(EndStation Station){
+        Station end = new EndStation(color, name);
+
+        this.next = end;
+        end.previous = this;
+        
+    }
+
+    public Station prevExist(){
+        if(this.previous != null){
+            return this.previous;
+        }
+        else{
+            return null;
+        }
     }
 
 

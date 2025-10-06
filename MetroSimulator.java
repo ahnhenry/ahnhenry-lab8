@@ -67,7 +67,14 @@ public class MetroSimulator{
 		va_square.connect(clarendon);
 		
 		//connect the other stations here
-		
+		clarendon.connect(court_house);
+		court_house.connect(rosslyn);
+		rosslyn.connect(foggy_bottom);
+		foggy_bottom.connect(farragut_west);
+		farragut_west.connect(mcpherson_square);
+		mcpherson_square.connect(metro_center);
+		metro_center.connect(federal_triangle);
+		federal_triangle.connect(smithsonian);
 
 		return va_square;
 
