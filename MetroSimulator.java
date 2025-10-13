@@ -84,6 +84,10 @@ public class MetroSimulator{
 		woodley_park.connect(dupont_circle);
 		
 		//connect the other stations here
+		dupont_circle.connect(farragut_north);
+		farragut_north. connect(metro_center);
+		metro_center.connect(gallery_place);
+		gallery_place.connect(judiciary_square);
 
 		return woodley_park;
 	}
@@ -92,7 +96,11 @@ public class MetroSimulator{
 		s1.connect(s2);
 		
 		//connect the other stations here
-
+		s2.connect(s3);
+		s3.connect(metro_center);
+		metro_center.connect(s4);
+		s4.connect(s5);
+		
 		return s1;
 	}
 }

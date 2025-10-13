@@ -4,6 +4,7 @@ public class Station {
     Boolean inService;
     Station previous;
     Station next;
+
    
 
     public Station(String color, String name ){
@@ -17,7 +18,7 @@ public class Station {
     }
 
     public Boolean inService(Station station){
-        if(station.color != "" && station.name != ""){
+        if(this.color != "" && this.name != ""){
             inService = true;
         }
         else{ 
@@ -37,9 +38,13 @@ public class Station {
     }
 
     public boolean isAvailable(){
-
-        return false;
+        return inService;
     }
+
+    public boolean switchAvailable(){
+        return !isAvailable();
+    }
+    
     public void connect(Station station){
         this.next = station;
         station.previous = this;
@@ -52,18 +57,49 @@ public class Station {
         
     }
 
-    public Station prevExist(){
+    public String prev(){
+        String prevName = "" ;
         if(this.previous != null){
-            return this.previous;
+            prevName = this.previous.name;
+    
         }
         else{
-            return null;
+            prevName = "none";
         }
-    }
+        return prevName;
+      }
+    
+      public String next(){
+        String nextName = "" ;
+        if(this.next != null){
+            nextName = this.next.name;
+    
+        }
+        else{
+            nextName = "none";
+        }
+        return nextName;
+      }
 
+      public int tripLength(Station station){
+        int length = 0;
+        Station current = this;
 
+        while(current != station && current != null){
+            length++;
+            current = current.next;
+        }
+        if(current == station){
+            return length + 1;
+        }
+
+        return -1;
+
+      }
+
+    @Override
     public String toString(){
 
-        return "STATION" + " " + name + ":" + " " + color + " " + "line," + "in service: true," + "previous station: " + "none, " ;       
+        return "STATION" + " " + name + ":" + " " + color + " " + "line," + "in service:" + inService(this) +  " ," + "previous station: " + prev() + ", " + "next station: " + next() + ", " ;       
     }
 }
