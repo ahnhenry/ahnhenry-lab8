@@ -12,11 +12,11 @@ public class EndStation extends Station {
     public String name = "";
 
     public void makeEnd(){
-        if(this.previous == null){
-
+        if(this.previous != null){
+            this.previous = null;
         }
-        if(this.next == null){
-            
+        if(this.next != null){
+            this.next = null;
         }
     }
 }
